@@ -1,7 +1,6 @@
 import pygame
 import sys
 from tiles import Tiles
-from tile import Tile
 
 pygame.init()
 
@@ -10,7 +9,7 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode(size)
 dt = 0
 
-tiles = Tiles(screen, size, (3, 3))
+tiles = Tiles(screen, size, (3, 3), "images/img.png")
 
 while True:
     for event in pygame.event.get():

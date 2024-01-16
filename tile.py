@@ -3,7 +3,7 @@ from blankSpace import BlankSpace
 
 
 class Tile(pygame.Rect):
-    def __init__(self, x, y, width, height, color):
+    def __init__(self, x, y, width, height, color, img):
         self.x0 = x
         self.y0 = y
         self.x = x
@@ -12,6 +12,7 @@ class Tile(pygame.Rect):
         self.height = height
         self.size = self.width, self.height
         self.color = color
+        self.img = pygame.transform.scale(img, (self.width, self.height))
 
     def moveTile(self, keys, blank: BlankSpace):
 
@@ -39,4 +40,7 @@ class Tile(pygame.Rect):
 
     def drawTile(self, surface):
         self.clamp_ip(surface.get_rect())
-        pygame.draw.rect(surface, self.color, self)
+
+        surface.blit(self.img, self)
+
+        # pygame.draw.rect(surface, self.color, self)
