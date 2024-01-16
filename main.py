@@ -18,7 +18,6 @@ while True:
     screen.fill("black")
 
     tiles.moveTiles()
-    pygame.time.delay(300)
 
     tiles.drawTiles()
 

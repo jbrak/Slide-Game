@@ -31,6 +31,7 @@ class Tile(pygame.Rect):
             blank.swap(self.x0, self.y0)
             self.x0 = self.x
             self.y0 = self.y
+            pygame.time.delay(300)
 
         else:
             self.x = self.x0
