@@ -15,6 +15,7 @@ class Tiles():
 
         self.pictures = [pygame.image.load(f'images/img_{i}.png') for i in range(dimension[0] * dimension[1])]
 
+        img_final = self.pictures[-1]
         tile_lst = []
         temp_pictures = self.pictures
 
@@ -29,11 +30,14 @@ class Tiles():
                          (j * height),
                          width,
                          height,
-                         random.choices(range(256), k=3),
                          img))
 
-        self.blank = BlankSpace(tile_lst[-1].x, tile_lst[-1].y, width, height)
-        del tile_lst[-1]
+                if img == img_final:
+                    deleteMe = tile_lst[-1]
+
+        self.blank = BlankSpace(deleteMe.x, deleteMe.y, width, height)
+
+        tile_lst.remove(deleteMe)
         self.tiles = tile_lst
 
     def moveTiles(self):
@@ -46,4 +50,3 @@ class Tiles():
     def drawTiles(self):
         for i in self.tiles:
             i.drawTile(self.screen)
-
